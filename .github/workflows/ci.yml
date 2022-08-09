@@ -25,7 +25,6 @@ jobs:
       # Build & run normal integration tests:
       - name: Build & test
         run: npm run test:integration
-        if: github.ref != 'refs/heads/master'
 
       # Build with secrets & run integrations tests, on master only:
       - name: Build & test for production release
