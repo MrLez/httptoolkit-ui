@@ -20,18 +20,7 @@ export const SubscriptionPlans = {
 };
 
 async function loadPlanPrices() {
-    const response = await fetch(
-        `https://accounts.httptoolkit.tech/.netlify/functions/get-prices?product_ids=${
-            Object.values(SubscriptionPlans).map(plan => plan.id).join(',')
-        }`
-    );
-
-    if (!response.ok) {
-        console.log(response);
-        throw new Error(`Failed to look up prices, got ${response.status}: ${response.statusText}`);
-    }
-
-    const data = await response.json();
+    const data = {"success":true,"response":{"products":[{"product_id":550380,"product_title":"HTTP Toolkit Pro (monthly)","currency":"USD","vendor_set_prices_included_tax":false,"price":{"gross":15.54,"net":14,"tax":1.54},"list_price":{"gross":15.54,"net":14,"tax":1.54},"subscription":{"trial_days":0,"interval":"month","frequency":1,"price":{"gross":15.54,"net":14,"tax":1.54},"list_price":{"gross":15.54,"net":14,"tax":1.54}}},{"product_id":550382,"product_title":"HTTP Toolkit Pro (annual)","currency":"USD","vendor_set_prices_included_tax":false,"price":{"gross":133.2,"net":120,"tax":13.2},"list_price":{"gross":133.2,"net":120,"tax":13.2},"subscription":{"trial_days":0,"interval":"year","frequency":1,"price":{"gross":133.2,"net":120,"tax":13.2},"list_price":{"gross":133.2,"net":120,"tax":13.2}}},{"product_id":550788,"product_title":"HTTP Toolkit Team (annual)","currency":"USD","vendor_set_prices_included_tax":false,"price":{"gross":239.76,"net":216,"tax":23.76},"list_price":{"gross":239.76,"net":216,"tax":23.76},"subscription":{"trial_days":0,"interval":"year","frequency":1,"price":{"gross":239.76,"net":216,"tax":23.76},"list_price":{"gross":239.76,"net":216,"tax":23.76}}},{"product_id":550789,"product_title":"HTTP Toolkit Team (monthly)","currency":"USD","vendor_set_prices_included_tax":false,"price":{"gross":24.42,"net":22,"tax":2.42},"list_price":{"gross":24.42,"net":22,"tax":2.42},"subscription":{"trial_days":0,"interval":"month","frequency":1,"price":{"gross":24.42,"net":22,"tax":2.42},"list_price":{"gross":24.42,"net":22,"tax":2.42}}},{"product_id":599788,"product_title":"HTTP Toolkit Pro (perpetual)","currency":"USD","vendor_set_prices_included_tax":false,"price":{"gross":277.5,"net":250,"tax":27.5},"list_price":{"gross":277.5,"net":250,"tax":27.5},"subscription":{"trial_days":0,"interval":"year","frequency":99,"price":{"gross":277.5,"net":250,"tax":27.5},"list_price":{"gross":277.5,"net":250,"tax":27.5}}}]}};
 
     if (!data.success) {
         console.log(data);
